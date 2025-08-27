@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1bg7iag76gqy"]
+
+[ext_resource type="PackedScene" uid="uid://chnxnu6csqdsm" path="res://escenas/player.tscn" id="1_io84i"]
+[ext_resource type="PackedScene" uid="uid://buuolsh82olsb" path="res://escenas/Suelo.tscn" id="2_oh5vl"]
+
+[node name="Nivel1" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_io84i")]
+position = Vector2(112, 158)
+
+[node name="Suelo" parent="." instance=ExtResource("2_oh5vl")]
