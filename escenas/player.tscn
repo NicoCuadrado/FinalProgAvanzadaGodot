@@ -148,20 +148,20 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ay70r"]
-radius = 23.0868
+radius = 16.0312
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_kkt6c")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -1)
+position = Vector2(3.00002, -15)
 scale = Vector2(2.59804, 2.68421)
 sprite_frames = SubResource("SpriteFrames_5vuvg")
 animation = &"attack"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-3, 14)
+position = Vector2(0, 6)
 shape = SubResource("CircleShape2D_ay70r")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

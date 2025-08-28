@@ -4,7 +4,8 @@
 size = Vector2(1058, 20)
 
 [node name="StaticBody2D" type="StaticBody2D"]
+position = Vector2(531, 314)
 
 [node name="Suelo" type="CollisionShape2D" parent="."]
-position = Vector2(526, 230)
+position = Vector2(-3, -4)
 shape = SubResource("RectangleShape2D_ty05r")
