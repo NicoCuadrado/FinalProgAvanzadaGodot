@@ -1,12 +1,16 @@
 class_name Player extends CharacterBody2D
 
 @onready var sprite_animation: AnimatedSprite2D = $AnimatedSprite2D
+@onready var health_component: HealthComponent = $Components/HealthComponent
+
+signal ataque_finalizado
 
 var velocidad_movimiento := 200
 var fuerza_salto := -300   # valor negativo porque el eje Y crece hacia abajo en Godot
 var gravedad := 600        # para que el personaje caiga
 var danio_ataque := 50
 var esta_atacando := false
+
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
@@ -47,7 +51,20 @@ func _physics_process(delta: float) -> void:
 func ataque():
 	sprite_animation.play("attack")
 	esta_atacando = true
-
+#termina la animacion de ataque
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if sprite_animation.animation == "attack":
 		esta_atacando = false
+		ataque_finalizado.emit()
+
+# el enemigo esta en la zona de ataque 
+func _on_area_attack_body_entered(body: Node2D) -> void:
+	if body is Enemy:
+		body.en_rango_de_ataque_del_player = true
+		
+	
+	
+#el enemigo no esta en la zona  de ataque 
+func _on_area_attack_body_exited(body: Node2D) -> void:
+	if body is Enemy:
+		body.en_rango_de_ataque_del_player = false

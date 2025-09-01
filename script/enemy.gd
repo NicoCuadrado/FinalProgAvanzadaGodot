@@ -1,14 +1,21 @@
 class_name Enemy extends CharacterBody2D
 
+@onready var player: Player = $"../Player"
+@onready var sprite_animation: AnimatedSprite2D = $AnimatedSprite2D
+@onready var health_component: HealthComponent = $Components/HealthComponent
+
 var velocidad_movimiento := 150
 var gravedad := 600
 var danio_ataque := 10
 var esta_atacando := false
-
-@onready var player: Player = $"../Player"
-@onready var sprite_animation: AnimatedSprite2D = $AnimatedSprite2D
+var en_rango_de_ataque_del_player := false
 
 var rango_deteccion := 350  # en píxeles
+
+func _ready() -> void:
+	
+	if player:
+		player.ataque_finalizado.connect(verificar_daño_recibido)
 
 func _physics_process(delta: float) -> void:
 	# gravedad
@@ -41,7 +48,13 @@ func _physics_process(delta: float) -> void:
 func ataque():
 	sprite_animation.play("attack")
 	esta_atacando = true
+	
 # cuando el player entra en la zona de ataque
+
+func verificar_daño_recibido():
+	if en_rango_de_ataque_del_player:
+		health_component.recieve_damage(player.danio_ataque)
+
 func _on_area_attack_body_entered(body: Node2D) -> void:
 	if body is Player:
 		ataque()
@@ -51,8 +64,9 @@ func _on_area_attack_body_exited(body: Node2D) -> void:
 	if body is Player:
 		esta_atacando = false
 
-
+#cuando termina la animacion de ataque
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if sprite_animation.animation == "attack":# Replace with function body.
+		player.health_component.recieve_damage(danio_ataque)
 		if esta_atacando:
 			ataque()

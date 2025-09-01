@@ -1,7 +1,8 @@
-[gd_scene load_steps=23 format=3 uid="uid://chnxnu6csqdsm"]
+[gd_scene load_steps=29 format=3 uid="uid://chnxnu6csqdsm"]
 
 [ext_resource type="Texture2D" uid="uid://ckes0g68x3i86" path="res://art/Adventurer-1.5/adventurer-v1.5-Sheet.png" id="1_esbpa"]
 [ext_resource type="Script" uid="uid://clnvcn6jgvem3" path="res://script/player.gd" id="1_kkt6c"]
+[ext_resource type="PackedScene" path="res://componentes/health_component.tscn" id="3_j7xnp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kkt6c"]
 atlas = ExtResource("1_esbpa")
@@ -34,6 +35,22 @@ region = Rect2(306, 222, 51, 37)
 [sub_resource type="AtlasTexture" id="AtlasTexture_5vuvg"]
 atlas = ExtResource("1_esbpa")
 region = Rect2(0, 0, 51, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ay70r"]
+atlas = ExtResource("1_esbpa")
+region = Rect2(96, 333, 48, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eolwv"]
+atlas = ExtResource("1_esbpa")
+region = Rect2(144, 333, 48, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yf8pj"]
+atlas = ExtResource("1_esbpa")
+region = Rect2(192, 333, 48, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_neflo"]
+atlas = ExtResource("1_esbpa")
+region = Rect2(240, 333, 48, 37)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g1ak7"]
 atlas = ExtResource("1_esbpa")
@@ -108,6 +125,23 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_ay70r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eolwv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yf8pj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_neflo")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_g1ak7")
 }, {
 "duration": 1.0,
@@ -150,6 +184,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_ay70r"]
 radius = 16.0312
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k4kro"]
+size = Vector2(50, 20)
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_kkt6c")
 
@@ -157,11 +194,32 @@ script = ExtResource("1_kkt6c")
 position = Vector2(3.00002, -15)
 scale = Vector2(2.59804, 2.68421)
 sprite_frames = SubResource("SpriteFrames_5vuvg")
-animation = &"attack"
+animation = &"dead"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 6)
 shape = SubResource("CircleShape2D_ay70r")
 
+[node name="AreaAttack" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaAttack"]
+shape = SubResource("RectangleShape2D_k4kro")
+debug_color = Color(0.938269, 0.194585, 0.399646, 0.42)
+
+[node name="Components" type="Node" parent="."]
+
+[node name="HealthComponent" parent="Components" node_paths=PackedStringArray("progress_bar") instance=ExtResource("3_j7xnp")]
+progress_bar = NodePath("../../ProgressBar")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -48.0
+offset_top = -73.0
+offset_right = 52.0
+offset_bottom = -64.0
+value = 100.0
+show_percentage = false
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="AreaAttack" to="." method="_on_area_attack_body_entered"]
+[connection signal="body_exited" from="AreaAttack" to="." method="_on_area_attack_body_exited"]
