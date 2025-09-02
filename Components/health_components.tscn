@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://bf15omtpsdam1"]
+
+[node name="HealthComponents" type="Node2D"]
