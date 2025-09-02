@@ -1,17 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1bg7iag76gqy"]
+[gd_scene load_steps=5 format=3 uid="uid://b1bg7iag76gqy"]
 
 [ext_resource type="PackedScene" uid="uid://chnxnu6csqdsm" path="res://escenas/player.tscn" id="1_io84i"]
-[ext_resource type="PackedScene" uid="uid://buuolsh82olsb" path="res://escenas/Suelo.tscn" id="2_oh5vl"]
+[ext_resource type="Texture2D" uid="uid://d1bdvdx8ubejs" path="res://plataformas/PNG/Background/Cartoon_Medieval_Field_Work_Level_Set_Background - Layer 00.png" id="1_ylyhu"]
 [ext_resource type="PackedScene" uid="uid://dr8jo16bdxcyf" path="res://escenas/enemy1.tscn" id="3_rgjns"]
+[ext_resource type="PackedScene" uid="uid://cdyhhabnyiav7" path="res://escenas/plataformas.tscn" id="4_43uub"]
 
 [node name="Nivel1" type="Node2D"]
 position = Vector2(-2, 1)
 
-[node name="Player" parent="." instance=ExtResource("1_io84i")]
-position = Vector2(563, 195)
+[node name="Fondo" type="Sprite2D" parent="."]
+position = Vector2(613, 291)
+texture = ExtResource("1_ylyhu")
 
-[node name="Suelo" parent="." instance=ExtResource("2_oh5vl")]
-position = Vector2(541, 239)
+[node name="Player" parent="." instance=ExtResource("1_io84i")]
+position = Vector2(60, 351)
 
 [node name="Enemy" parent="." instance=ExtResource("3_rgjns")]
-position = Vector2(106, 185)
+position = Vector2(593, 365)
+
+[node name="Plataformas" parent="." instance=ExtResource("4_43uub")]
+position = Vector2(781, 483)
