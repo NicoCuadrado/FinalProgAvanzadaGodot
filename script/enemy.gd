@@ -4,11 +4,18 @@ var velocidad_movimiento := 150
 var gravedad := 600
 var danio_ataque := 10
 var esta_atacando := false
+var en_rango_de_ataque_player = false
 
 @onready var player: Player = $"../Player"
 @onready var sprite_animation: AnimatedSprite2D = $AnimatedSprite2D
+@onready var health_component: HealthComponent = $Components/HealthComponent
 
 var rango_deteccion := 350  # en píxeles
+
+func _ready() -> void:
+	health_component.death.connect(on_dead)
+	if player:
+		player.ataque_finalizado.connect(verificar_danio_recibido)
 
 func _physics_process(delta: float) -> void:
 	# gravedad
@@ -41,6 +48,14 @@ func _physics_process(delta: float) -> void:
 func ataque():
 	sprite_animation.play("attack")
 	esta_atacando = true
+	
+func verificar_danio_recibido():
+	if en_rango_de_ataque_player:
+		health_component.receive_damage(player.danio_ataque)
+		
+func on_dead():
+	queue_free()
+	
 # cuando el player entra en la zona de ataque
 func _on_area_attack_body_entered(body: Node2D) -> void:
 	if body is Player:
@@ -54,5 +69,6 @@ func _on_area_attack_body_exited(body: Node2D) -> void:
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if sprite_animation.animation == "attack":# Replace with function body.
+		player.health_component.receive_damage(danio_ataque)
 		if esta_atacando:
 			ataque()

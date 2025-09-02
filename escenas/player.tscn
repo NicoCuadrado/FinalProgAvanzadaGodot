@@ -1,7 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://chnxnu6csqdsm"]
+[gd_scene load_steps=26 format=3 uid="uid://chnxnu6csqdsm"]
 
 [ext_resource type="Texture2D" uid="uid://ckes0g68x3i86" path="res://art/Adventurer-1.5/adventurer-v1.5-Sheet.png" id="1_esbpa"]
 [ext_resource type="Script" uid="uid://clnvcn6jgvem3" path="res://script/player.gd" id="1_kkt6c"]
+[ext_resource type="PackedScene" uid="uid://bf15omtpsdam1" path="res://Components/health_components.tscn" id="3_k4kro"]
+[ext_resource type="Script" uid="uid://bekava03hjdwr" path="res://script/health_components.gd" id="4_6nxto"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kkt6c"]
 atlas = ExtResource("1_esbpa")
@@ -150,6 +152,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_ay70r"]
 radius = 16.0312
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t3yu4"]
+size = Vector2(54, 20)
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_kkt6c")
 
@@ -164,4 +169,27 @@ autoplay = "idle"
 position = Vector2(0, 6)
 shape = SubResource("CircleShape2D_ay70r")
 
+[node name="Components" type="Node" parent="."]
+
+[node name="HealthComponent" parent="Components" node_paths=PackedStringArray("progress_bar") instance=ExtResource("3_k4kro")]
+script = ExtResource("4_6nxto")
+progress_bar = NodePath("../../ProgressBar")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -68.0
+offset_top = -76.0
+offset_right = 62.0
+offset_bottom = -64.0
+value = 100.0
+show_percentage = false
+
+[node name="AreaAttack" type="Area2D" parent="."]
+position = Vector2(-1, -1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaAttack"]
+shape = SubResource("RectangleShape2D_t3yu4")
+debug_color = Color(0.930933, 0.229629, 0.333827, 0.42)
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="AreaAttack" to="." method="_on_area_attack_body_entered"]
+[connection signal="body_exited" from="AreaAttack" to="." method="_on_area_attack_body_exited"]
