@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://chnxnu6csqdsm"]
+[gd_scene load_steps=32 format=3 uid="uid://chnxnu6csqdsm"]
 
 [ext_resource type="Texture2D" uid="uid://ckes0g68x3i86" path="res://art/Adventurer-1.5/adventurer-v1.5-Sheet.png" id="1_esbpa"]
 [ext_resource type="Script" uid="uid://clnvcn6jgvem3" path="res://script/player.gd" id="1_kkt6c"]
@@ -36,6 +36,22 @@ region = Rect2(306, 222, 51, 37)
 [sub_resource type="AtlasTexture" id="AtlasTexture_5vuvg"]
 atlas = ExtResource("1_esbpa")
 region = Rect2(0, 0, 51, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ay70r"]
+atlas = ExtResource("1_esbpa")
+region = Rect2(42, 333, 42, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eolwv"]
+atlas = ExtResource("1_esbpa")
+region = Rect2(168, 333, 42, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yf8pj"]
+atlas = ExtResource("1_esbpa")
+region = Rect2(210, 333, 42, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_neflo"]
+atlas = ExtResource("1_esbpa")
+region = Rect2(252, 333, 42, 37)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g1ak7"]
 atlas = ExtResource("1_esbpa")
@@ -110,6 +126,23 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_ay70r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eolwv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yf8pj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_neflo")
+}],
+"loop": false,
+"name": &"death",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_g1ak7")
 }, {
 "duration": 1.0,
@@ -152,6 +185,12 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_ay70r"]
 radius = 16.0312
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k4kro"]
+bg_color = Color(0.976471, 0.168627, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6nxto"]
+bg_color = Color(0.340382, 0.701448, 0.116651, 1)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t3yu4"]
 size = Vector2(54, 20)
 
@@ -162,8 +201,10 @@ script = ExtResource("1_kkt6c")
 position = Vector2(3.00002, -15)
 scale = Vector2(2.59804, 2.68421)
 sprite_frames = SubResource("SpriteFrames_5vuvg")
-animation = &"attack"
+animation = &"death"
 autoplay = "idle"
+frame = 3
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 6)
@@ -180,6 +221,8 @@ offset_left = -68.0
 offset_top = -76.0
 offset_right = 62.0
 offset_bottom = -64.0
+theme_override_styles/background = SubResource("StyleBoxFlat_k4kro")
+theme_override_styles/fill = SubResource("StyleBoxFlat_6nxto")
 value = 100.0
 show_percentage = false
 

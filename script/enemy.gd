@@ -5,6 +5,7 @@ var gravedad := 600
 var danio_ataque := 10
 var esta_atacando := false
 var en_rango_de_ataque_player = false
+var esta_muerto := false
 
 @onready var player: Player = $"../Player"
 @onready var sprite_animation: AnimatedSprite2D = $AnimatedSprite2D
@@ -23,7 +24,12 @@ func _physics_process(delta: float) -> void:
 		velocity.y += gravedad * delta
 	else:
 		velocity.y = max(velocity.y, 0)
-
+	
+	if esta_muerto:
+		velocity.x = 0
+		return
+	
+	
 	if !esta_atacando and player:
 		var distancia = global_position.distance_to(player.global_position)
 
@@ -54,6 +60,10 @@ func verificar_danio_recibido():
 		health_component.receive_damage(player.danio_ataque)
 		
 func on_dead():
+	#reproduce la animacion de muerte
+	esta_muerto = true
+	sprite_animation.play("death")
+	await sprite_animation.animation_finished
 	queue_free()
 	
 # cuando el player entra en la zona de ataque

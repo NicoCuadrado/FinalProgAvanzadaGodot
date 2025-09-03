@@ -10,6 +10,7 @@ var fuerza_salto := -300   # valor negativo porque el eje Y crece hacia abajo en
 var gravedad := 600        # para que el personaje caiga
 var danio_ataque := 50
 var esta_atacando := false
+var esta_muerto := false
 
 func _ready() -> void:
 	health_component.death.connect(on_dead)
@@ -21,6 +22,9 @@ func _input(event: InputEvent) -> void:
 				ataque()
 
 func _physics_process(delta: float) -> void:
+	if esta_muerto:
+		return # esto no permite mas inputs si el jugador esta muerto
+	
 	# aplicar gravedad siempre
 	if !is_on_floor():
 		velocity.y += gravedad * delta
@@ -60,6 +64,9 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		ataque_finalizado.emit()
 
 func on_dead():
+	esta_muerto = true
+	sprite_animation.play("death")
+	await sprite_animation.animation_finished
 	print("game Over")
 	get_tree().paused = true
 
