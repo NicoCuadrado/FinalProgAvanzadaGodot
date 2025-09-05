@@ -13,6 +13,10 @@ var danio_ataque := 50
 var esta_atacando := false
 var esta_muerto := false
 
+
+var saltos_maximos := 2
+var saltos_actuales := 0
+
 func _ready() -> void:
 	health_component.death.connect(on_dead)
 	update_vidas()
@@ -29,9 +33,25 @@ func _physics_process(delta: float) -> void:
 	if !is_on_floor():
 		velocity.y += gravedad * delta
 	else:
-		if Input.is_action_just_pressed("ui_accept"):
-			velocity.y = fuerza_salto
+		velocity.y = max(velocity.y, 0)
+		saltos_actuales = 0  # ✅ Resetear saltos al tocar el piso
 
+	# --- SALTO Y DOBLE SALTO ---
+	if Input.is_action_just_pressed("ui_accept") and saltos_actuales < saltos_maximos:
+		velocity.y = fuerza_salto
+		saltos_actuales += 1
+	
+	if saltos_actuales == 1:
+		sprite_animation.play("jump")  # animación de primer salto
+	elif saltos_actuales == 2:
+		sprite_animation.play("jump")  # animación de doble salto
+	
+	# Animación de caída si no está en el piso
+	#if !is_on_floor() and velocity.y > 0:
+	#	if sprite_animation.animation != "fall":
+	#		sprite_animation.play("fall")
+
+	# Movimiento lateral
 	if !esta_atacando:
 		var direccion_x := 0
 		if Input.is_action_pressed("ui_left"):
