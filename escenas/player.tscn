@@ -183,8 +183,8 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ay70r"]
-radius = 16.0312
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6nxto"]
+size = Vector2(29, 78)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k4kro"]
 bg_color = Color(0.976471, 0.168627, 0, 1)
@@ -208,8 +208,8 @@ frame = 3
 frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 6)
-shape = SubResource("CircleShape2D_ay70r")
+position = Vector2(14.5, -7)
+shape = SubResource("RectangleShape2D_6nxto")
 
 [node name="Components" type="Node" parent="."]
 

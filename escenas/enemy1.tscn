@@ -241,8 +241,8 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_i1m3p"]
-radius = 22.0227
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o5e4m"]
+size = Vector2(49.5, 69.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1lw3w"]
 size = Vector2(54, 20)
@@ -268,8 +268,8 @@ frame = 2
 frame_progress = 0.915459
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, -1)
-shape = SubResource("CircleShape2D_i1m3p")
+position = Vector2(-19, 10)
+shape = SubResource("RectangleShape2D_o5e4m")
 
 [node name="AreaAttack" type="Area2D" parent="."]
 position = Vector2(-1, -1)

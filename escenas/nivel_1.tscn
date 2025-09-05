@@ -3,20 +3,32 @@
 [ext_resource type="PackedScene" uid="uid://chnxnu6csqdsm" path="res://escenas/player.tscn" id="1_io84i"]
 [ext_resource type="Texture2D" uid="uid://d1bdvdx8ubejs" path="res://plataformas/PNG/Background/Cartoon_Medieval_Field_Work_Level_Set_Background - Layer 00.png" id="1_ylyhu"]
 [ext_resource type="PackedScene" uid="uid://dr8jo16bdxcyf" path="res://escenas/enemy1.tscn" id="3_rgjns"]
-[ext_resource type="PackedScene" path="res://escenas/plataformas.tscn" id="4_43uub"]
+[ext_resource type="PackedScene" uid="uid://cdyhhabnyiav7" path="res://escenas/plataformas.tscn" id="4_43uub"]
 
 [node name="Nivel1" type="Node2D"]
 position = Vector2(-2, 1)
 
 [node name="Fondo" type="Sprite2D" parent="."]
-position = Vector2(613, 291)
+position = Vector2(-17.9999, 206.5)
+scale = Vector2(3.35982, 1.20133)
 texture = ExtResource("1_ylyhu")
 
 [node name="Player" parent="." instance=ExtResource("1_io84i")]
 position = Vector2(60, 351)
 
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
 [node name="Enemy" parent="." instance=ExtResource("3_rgjns")]
-position = Vector2(593, 365)
+position = Vector2(594, 352)
 
 [node name="Plataformas" parent="." instance=ExtResource("4_43uub")]
 position = Vector2(781, 483)
+
+[node name="Enemy2" parent="." instance=ExtResource("3_rgjns")]
+position = Vector2(1088, 350)
+
+[node name="Enemy3" parent="." instance=ExtResource("3_rgjns")]
+position = Vector2(1423, 233)
+
+[node name="Enemy4" parent="." instance=ExtResource("3_rgjns")]
+position = Vector2(1308, 352)
