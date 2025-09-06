@@ -9,7 +9,7 @@ signal ataque_finalizado
 var velocidad_movimiento := 200
 var fuerza_salto := -300
 var gravedad := 600
-var danio_ataque := 50
+var danio_ataque := 20
 var esta_atacando := false
 var esta_muerto := false
 

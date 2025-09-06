@@ -5,50 +5,65 @@
 [sub_resource type="Theme" id="Theme_cp6i1"]
 
 [node name="GameOver" type="Control"]
+visible = false
 layout_mode = 3
+anchor_right = 2.305
+anchor_bottom = 1.649
+offset_left = 540.0
+offset_top = 12.0
+offset_right = -1130.4
+offset_bottom = -455.28
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_0u2gn")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 12.0
+offset_right = 1.0
+offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_0u2gn")
 
-[node name="Control" type="Control" parent="."]
-anchors_preset = 0
-offset_left = 164.0
-offset_top = 37.0
-offset_right = 1149.0
-offset_bottom = 416.0
+[node name="Control" type="Control" parent="CanvasLayer/CenterContainer"]
+layout_mode = 2
 theme = SubResource("Theme_cp6i1")
 
-[node name="Label" type="Label" parent="Control"]
+[node name="Label" type="Label" parent="CanvasLayer/CenterContainer/Control"]
 layout_mode = 0
-offset_left = 73.0
-offset_top = 19.0
-offset_right = 911.0
-offset_bottom = 245.0
+offset_left = -156.0
+offset_top = -165.0
+offset_right = 163.0
+offset_bottom = -1.0
 theme_override_font_sizes/font_size = 40
 text = "GAME OVER"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Reintentar" type="Button" parent="Control"]
+[node name="Reintentar" type="Button" parent="CanvasLayer/CenterContainer/Control"]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 0
-offset_left = 271.0
-offset_top = 216.0
-offset_right = 471.0
-offset_bottom = 261.0
+offset_left = -218.0
+offset_top = -7.0
+offset_right = -18.0
+offset_bottom = 43.0
 text = "REINTENTAR"
 
-[node name="Menu" type="Button" parent="Control"]
+[node name="Menu" type="Button" parent="CanvasLayer/CenterContainer/Control"]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 0
-offset_left = 534.0
-offset_top = 216.0
-offset_right = 734.0
-offset_bottom = 266.0
+offset_left = 39.0
+offset_top = -7.0
+offset_right = 239.0
+offset_bottom = 43.0
 text = "MENU"
 
-[connection signal="pressed" from="Control/Reintentar" to="." method="_on_reintentar_pressed"]
-[connection signal="pressed" from="Control/Menu" to="." method="_on_volver_al_menu_pressed"]
+[connection signal="pressed" from="CanvasLayer/CenterContainer/Control/Reintentar" to="." method="_on_reintentar_pressed"]
+[connection signal="pressed" from="CanvasLayer/CenterContainer/Control/Menu" to="." method="_on_volver_al_menu_pressed"]

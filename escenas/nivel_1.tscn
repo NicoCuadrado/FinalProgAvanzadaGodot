@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://b1bg7iag76gqy"]
+[gd_scene load_steps=6 format=3 uid="uid://b1bg7iag76gqy"]
 
 [ext_resource type="PackedScene" uid="uid://chnxnu6csqdsm" path="res://escenas/player.tscn" id="1_io84i"]
 [ext_resource type="Texture2D" uid="uid://d1bdvdx8ubejs" path="res://plataformas/PNG/Background/Cartoon_Medieval_Field_Work_Level_Set_Background - Layer 00.png" id="1_ylyhu"]
 [ext_resource type="PackedScene" uid="uid://dr8jo16bdxcyf" path="res://escenas/enemy1.tscn" id="3_rgjns"]
 [ext_resource type="PackedScene" uid="uid://cdyhhabnyiav7" path="res://escenas/plataformas.tscn" id="4_43uub"]
+[ext_resource type="PackedScene" uid="uid://clxqpq4ml47ab" path="res://escenas/boss.tscn" id="5_ylyhu"]
 
 [node name="Nivel1" type="Node2D"]
 position = Vector2(-2, 1)
@@ -35,3 +36,6 @@ position = Vector2(1402, 245)
 
 [node name="Enemy4" parent="." instance=ExtResource("3_rgjns")]
 position = Vector2(1319, 358)
+
+[node name="Boss" parent="." instance=ExtResource("5_ylyhu")]
+position = Vector2(1700, 331)
