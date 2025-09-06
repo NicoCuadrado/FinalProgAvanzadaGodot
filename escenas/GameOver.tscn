@@ -1,0 +1,53 @@
+[gd_scene load_steps=3 format=3 uid="uid://ybesp0v23jjj"]
+
+[ext_resource type="Script" uid="uid://c8tlpwtynx117" path="res://script/game_over.gd" id="1_0u2gn"]
+
+[sub_resource type="Theme" id="Theme_cp6i1"]
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0u2gn")
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 164.0
+offset_top = 37.0
+offset_right = 1149.0
+offset_bottom = 416.0
+theme = SubResource("Theme_cp6i1")
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 73.0
+offset_top = 19.0
+offset_right = 911.0
+offset_bottom = 245.0
+theme_override_font_sizes/font_size = 40
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Reintentar" type="Button" parent="Control"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 0
+offset_left = 271.0
+offset_top = 216.0
+offset_right = 471.0
+offset_bottom = 261.0
+text = "REINTENTAR"
+
+[node name="Menu" type="Button" parent="Control"]
+custom_minimum_size = Vector2(200, 50)
+offset_left = 534.0
+offset_top = 216.0
+offset_right = 734.0
+offset_bottom = 266.0
+text = "MENU"
+
+[connection signal="pressed" from="Control/Reintentar" to="." method="_on_reintentar_pressed"]
+[connection signal="pressed" from="Control/Menu" to="." method="_on_volver_al_menu_pressed"]

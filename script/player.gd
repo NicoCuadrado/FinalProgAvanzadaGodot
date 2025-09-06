@@ -96,9 +96,11 @@ func on_dead():
 	if GameManager.vidas > 0:
 		get_tree().reload_current_scene()
 	else:
-		print("Game Over")
+		
 		sprite_animation.play("death")
 		await sprite_animation.animation_finished
+		var game_over_scene = preload("res://escenas/GameOver.tscn").instantiate()
+		get_tree().current_scene.add_child(game_over_scene)
 		get_tree().paused = true
 
 func _on_area_attack_body_entered(body: Node2D) -> void:

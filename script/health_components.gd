@@ -3,6 +3,7 @@ class_name HealthComponent extends Node2D
 @export var progress_bar:ProgressBar
 @export var current_health := 100
 @export var max_health := 100 
+@export var progress_bar_hud:ProgressBar
 
 signal death
 

@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://vssffewa2d7b"]
+
+[ext_resource type="Script" uid="uid://ch357hpgj1m08" path="res://script/win.gd" id="1_j23lw"]
+
+[sub_resource type="Theme" id="Theme_i72b4"]
+
+[node name="Win" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_j23lw")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 164.0
+offset_top = 37.0
+offset_right = 1149.0
+offset_bottom = 416.0
+theme = SubResource("Theme_i72b4")
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 122.0
+offset_top = 26.0
+offset_right = 960.0
+offset_bottom = 250.0
+theme_override_font_sizes/font_size = 40
+text = "GANASTE!!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Reintentar" type="Button" parent="Control"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 0
+offset_left = 320.0
+offset_top = 223.0
+offset_right = 520.0
+offset_bottom = 273.0
+text = "REINTENTAR"
+
+[node name="Menu" type="Button" parent="Control"]
+custom_minimum_size = Vector2(200, 50)
+offset_left = 583.0
+offset_top = 223.0
+offset_right = 783.0
+offset_bottom = 273.0
+text = "MENU"

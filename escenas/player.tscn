@@ -1,10 +1,11 @@
-[gd_scene load_steps=49 format=3 uid="uid://chnxnu6csqdsm"]
+[gd_scene load_steps=50 format=3 uid="uid://chnxnu6csqdsm"]
 
 [ext_resource type="Texture2D" uid="uid://ckes0g68x3i86" path="res://art/Adventurer-1.5/adventurer-v1.5-Sheet.png" id="1_esbpa"]
 [ext_resource type="Script" uid="uid://clnvcn6jgvem3" path="res://script/player.gd" id="1_kkt6c"]
 [ext_resource type="PackedScene" uid="uid://bf15omtpsdam1" path="res://Components/health_components.tscn" id="3_k4kro"]
 [ext_resource type="Script" uid="uid://bekava03hjdwr" path="res://script/health_components.gd" id="4_6nxto"]
 [ext_resource type="Texture2D" uid="uid://dyxfjvsae2nq4" path="res://art/Adventurer-1.5/Individual Sprites/adventurer-idle-02.png" id="5_6nxto"]
+[ext_resource type="Texture2D" uid="uid://b4p1f2upl7ud7" path="res://art/Adventurer-1.5/Individual Sprites/adventurer-idle-01.png" id="6_t3yu4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kkt6c"]
 atlas = ExtResource("1_esbpa")
@@ -308,14 +309,14 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6nxto"]
 size = Vector2(35, 78)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t3yu4"]
+size = Vector2(54, 20)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k4kro"]
 bg_color = Color(0.976471, 0.168627, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6nxto"]
 bg_color = Color(0.340382, 0.701448, 0.116651, 1)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_t3yu4"]
-size = Vector2(54, 20)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_kkt6c")
@@ -335,17 +336,7 @@ shape = SubResource("RectangleShape2D_6nxto")
 
 [node name="HealthComponent" parent="Components" node_paths=PackedStringArray("progress_bar") instance=ExtResource("3_k4kro")]
 script = ExtResource("4_6nxto")
-progress_bar = NodePath("../../ProgressBar")
-
-[node name="ProgressBar" type="ProgressBar" parent="."]
-offset_left = -68.0
-offset_top = -76.0
-offset_right = 62.0
-offset_bottom = -64.0
-theme_override_styles/background = SubResource("StyleBoxFlat_k4kro")
-theme_override_styles/fill = SubResource("StyleBoxFlat_6nxto")
-value = 100.0
-show_percentage = false
+progress_bar = NodePath("../../CanvasLayer/BarraDeVida/ProgressBar")
 
 [node name="AreaAttack" type="Area2D" parent="."]
 position = Vector2(-1, -1)
@@ -374,6 +365,25 @@ texture = ExtResource("5_6nxto")
 [node name="Vida3" type="TextureRect" parent="CanvasLayer/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("5_6nxto")
+
+[node name="BarraDeVida" type="HBoxContainer" parent="CanvasLayer"]
+offset_left = 170.0
+offset_top = 2.0
+offset_right = 454.0
+offset_bottom = 27.0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/BarraDeVida"]
+custom_minimum_size = Vector2(80, 50)
+layout_mode = 2
+texture = ExtResource("6_t3yu4")
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/BarraDeVida"]
+custom_minimum_size = Vector2(600, 40)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_k4kro")
+theme_override_styles/fill = SubResource("StyleBoxFlat_6nxto")
+value = 100.0
+show_percentage = false
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="AreaAttack" to="." method="_on_area_attack_body_entered"]
