@@ -43,6 +43,7 @@ text = "REINTENTAR"
 
 [node name="Menu" type="Button" parent="Control"]
 custom_minimum_size = Vector2(200, 50)
+layout_mode = 0
 offset_left = 534.0
 offset_top = 216.0
 offset_right = 734.0

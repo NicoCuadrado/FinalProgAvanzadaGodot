@@ -378,7 +378,7 @@ layout_mode = 2
 texture = ExtResource("6_t3yu4")
 
 [node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/BarraDeVida"]
-custom_minimum_size = Vector2(600, 40)
+custom_minimum_size = Vector2(300, 20)
 layout_mode = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_k4kro")
 theme_override_styles/fill = SubResource("StyleBoxFlat_6nxto")
