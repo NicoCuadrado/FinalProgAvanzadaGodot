@@ -14,21 +14,24 @@ scale = Vector2(3.35982, 1.20133)
 texture = ExtResource("1_ylyhu")
 
 [node name="Player" parent="." instance=ExtResource("1_io84i")]
-position = Vector2(60, 351)
+position = Vector2(9, 373)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+limit_left = -210
+limit_right = 2020
 
 [node name="Enemy" parent="." instance=ExtResource("3_rgjns")]
-position = Vector2(594, 352)
+position = Vector2(601, 356)
+up_direction = Vector2(0, 1)
 
 [node name="Plataformas" parent="." instance=ExtResource("4_43uub")]
 position = Vector2(781, 483)
 
 [node name="Enemy2" parent="." instance=ExtResource("3_rgjns")]
-position = Vector2(1088, 350)
+position = Vector2(1089, 358)
 
 [node name="Enemy3" parent="." instance=ExtResource("3_rgjns")]
-position = Vector2(1423, 233)
+position = Vector2(1402, 245)
 
 [node name="Enemy4" parent="." instance=ExtResource("3_rgjns")]
-position = Vector2(1308, 352)
+position = Vector2(1319, 358)

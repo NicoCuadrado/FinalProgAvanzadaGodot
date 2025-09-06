@@ -184,7 +184,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6nxto"]
-size = Vector2(29, 78)
+size = Vector2(35, 78)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k4kro"]
 bg_color = Color(0.976471, 0.168627, 0, 1)
@@ -208,7 +208,7 @@ frame = 3
 frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(14.5, -7)
+position = Vector2(11.5, -7)
 shape = SubResource("RectangleShape2D_6nxto")
 
 [node name="Components" type="Node" parent="."]
