@@ -245,7 +245,7 @@ animations = [{
 size = Vector2(49.5, 69.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1lw3w"]
-size = Vector2(54, 20)
+size = Vector2(73, 20)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o5e4m"]
 bg_color = Color(1, 0.156863, 0, 1)
@@ -273,6 +273,7 @@ shape = SubResource("RectangleShape2D_o5e4m")
 position = Vector2(-1, -1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaAttack"]
+position = Vector2(-22, 1)
 shape = SubResource("RectangleShape2D_1lw3w")
 debug_color = Color(0.930933, 0.229629, 0.333827, 0.42)
 

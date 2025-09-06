@@ -1,8 +1,8 @@
-class_name Enemy extends CharacterBody2D
+class_name Boss extends CharacterBody2D
 
 var velocidad_movimiento := 150
 var gravedad := 600
-var danio_ataque := 10
+var danio_ataque := 15
 var esta_atacando := false
 var en_rango_de_ataque_player = false
 var esta_muerto := false
@@ -59,7 +59,6 @@ func ataque():
 func verificar_danio_recibido():
 	if en_rango_de_ataque_player:
 		health_component.receive_damage(player.danio_ataque)
-		print(player.danio_ataque)
 		
 func on_dead():
 	#reproduce la animacion de muerte
@@ -67,17 +66,21 @@ func on_dead():
 	sprite_animation.play("death")
 	await sprite_animation.animation_finished
 	
+	var win_screen = preload("res://escenas/Win.tscn").instantiate()
+	get_tree().current_scene.add_child(win_screen)
+	
 	queue_free()
 	
 # cuando el player entra en la zona de ataque
 func _on_area_attack_body_entered(body: Node2D) -> void:
 	if body is Player:
 		ataque()
-		
+		en_rango_de_ataque_player = true
 # cuando el player sale de la zona de ataque
 func _on_area_attack_body_exited(body: Node2D) -> void:
 	if body is Player:
 		esta_atacando = false
+		en_rango_de_ataque_player = false
 
 
 func _on_animated_sprite_2d_animation_finished() -> void:

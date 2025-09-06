@@ -1,6 +1,6 @@
 class_name GameOver extends Control
 
-func _ready():
+func _ready():	
 	# Opcional: pausar el juego al mostrar el menú
 	get_tree().paused = true
 	# Habilitar la UI aunque el juego esté pausado
