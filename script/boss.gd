@@ -2,7 +2,7 @@ class_name Boss extends CharacterBody2D
 
 var velocidad_movimiento := 150
 var gravedad := 600
-var danio_ataque := 15
+var danio_ataque := 8
 var esta_atacando := false
 var en_rango_de_ataque_player = false
 var esta_muerto := false

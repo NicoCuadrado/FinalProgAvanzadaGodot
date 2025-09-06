@@ -188,7 +188,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack",
-"speed": 10.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -329,7 +329,7 @@ script = ExtResource("1_kkt6c")
 position = Vector2(3.00002, -15)
 scale = Vector2(2.59804, 2.68421)
 sprite_frames = SubResource("SpriteFrames_5vuvg")
-animation = &"fall"
+animation = &"attack"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

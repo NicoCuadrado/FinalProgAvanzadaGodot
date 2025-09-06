@@ -12,5 +12,4 @@ func _on_reintentar_pressed():
 
 func _on_volver_al_menu_pressed():
 	get_tree().paused = false
-	# Cargar tu menú principal cuando lo tengas
-	get_tree().change_scene_to_file("")
+	get_tree().change_scene_to_file("res://escenas/MenuPrincipal.tscn")

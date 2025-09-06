@@ -9,7 +9,7 @@ signal ataque_finalizado
 var velocidad_movimiento := 200
 var fuerza_salto := -300
 var gravedad := 600
-var danio_ataque := 20
+var danio_ataque := 25
 var esta_atacando := false
 var esta_muerto := false
 
@@ -45,11 +45,6 @@ func _physics_process(delta: float) -> void:
 		sprite_animation.play("jump")  # animación de primer salto
 	elif saltos_actuales == 2:
 		sprite_animation.play("jump")  # animación de doble salto
-	
-	# Animación de caída si no está en el piso
-	#if !is_on_floor() and velocity.y > 0:
-	#	if sprite_animation.animation != "fall":
-	#		sprite_animation.play("fall")
 
 	# Movimiento lateral
 	if !esta_atacando:

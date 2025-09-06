@@ -54,3 +54,6 @@ offset_top = -60.0
 offset_right = 230.0
 offset_bottom = -10.0
 text = "MENU"
+
+[connection signal="pressed" from="CanvasLayer/CenterContainer/Control/Reintentar" to="." method="_on_reintentar_pressed"]
+[connection signal="pressed" from="CanvasLayer/CenterContainer/Control/Menu" to="." method="_on_menu_pressed"]

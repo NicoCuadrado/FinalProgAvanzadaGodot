@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="JuegoProgramacionAvanzada"
-run/main_scene="uid://b1bg7iag76gqy"
+run/main_scene="uid://bdt7trimhcnvk"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 run/max_fps=60
 config/icon="res://art/icon.svg"
