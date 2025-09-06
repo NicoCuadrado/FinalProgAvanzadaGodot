@@ -14,6 +14,7 @@ var esta_muerto := false
 var rango_deteccion := 350  # en píxeles
 
 func _ready() -> void:
+	
 	health_component.death.connect(on_dead)
 	if player:
 		player.ataque_finalizado.connect(verificar_danio_recibido)
@@ -64,6 +65,7 @@ func on_dead():
 	esta_muerto = true
 	sprite_animation.play("death")
 	await sprite_animation.animation_finished
+	
 	queue_free()
 	
 # cuando el player entra en la zona de ataque

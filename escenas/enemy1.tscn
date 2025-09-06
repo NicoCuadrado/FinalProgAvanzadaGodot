@@ -262,10 +262,8 @@ script = ExtResource("1_ocnky")
 position = Vector2(-10, -37)
 scale = Vector2(1.51695, 2.04114)
 sprite_frames = SubResource("SpriteFrames_r8nv7")
-animation = &"death"
+animation = &"attack"
 autoplay = "idle"
-frame = 2
-frame_progress = 0.915459
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-19, 10)
