@@ -36,34 +36,41 @@ grow_vertical = 2
 layout_mode = 2
 theme = SubResource("Theme_cp6i1")
 
-[node name="Label" type="Label" parent="CanvasLayer/CenterContainer/Control"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer/Control"]
 layout_mode = 0
-offset_left = -156.0
-offset_top = -165.0
-offset_right = 163.0
-offset_bottom = -1.0
+offset_left = -269.0
+offset_top = -250.0
+offset_right = 230.0
+offset_bottom = 163.0
+
+[node name="Label" type="Label" parent="CanvasLayer/CenterContainer/Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 200.14)
+layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "GAME OVER"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Reintentar" type="Button" parent="CanvasLayer/CenterContainer/Control"]
+[node name="Reintentar" type="Button" parent="CanvasLayer/CenterContainer/Control/VBoxContainer"]
 custom_minimum_size = Vector2(200, 50)
-layout_mode = 0
-offset_left = -218.0
-offset_top = -7.0
-offset_right = -18.0
-offset_bottom = 43.0
+layout_mode = 2
 text = "REINTENTAR"
 
-[node name="Menu" type="Button" parent="CanvasLayer/CenterContainer/Control"]
+[node name="Menu" type="Button" parent="CanvasLayer/CenterContainer/Control/VBoxContainer"]
 custom_minimum_size = Vector2(200, 50)
-layout_mode = 0
-offset_left = 39.0
-offset_top = -7.0
-offset_right = 239.0
-offset_bottom = 43.0
+layout_mode = 2
 text = "MENU"
 
-[connection signal="pressed" from="CanvasLayer/CenterContainer/Control/Reintentar" to="." method="_on_reintentar_pressed"]
-[connection signal="pressed" from="CanvasLayer/CenterContainer/Control/Menu" to="." method="_on_volver_al_menu_pressed"]
+[node name="TitiloTime" type="Label" parent="CanvasLayer/CenterContainer/Control/VBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Tiempo en partida:"
+
+[node name="TimeLabel" type="Label" parent="CanvasLayer/CenterContainer/Control/VBoxContainer"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[connection signal="pressed" from="CanvasLayer/CenterContainer/Control/VBoxContainer/Reintentar" to="." method="_on_reintentar_pressed"]
+[connection signal="pressed" from="CanvasLayer/CenterContainer/Control/VBoxContainer/Menu" to="." method="_on_volver_al_menu_pressed"]

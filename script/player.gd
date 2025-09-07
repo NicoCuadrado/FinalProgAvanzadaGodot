@@ -3,6 +3,7 @@ class_name Player extends CharacterBody2D
 @onready var sprite_animation: AnimatedSprite2D = $AnimatedSprite2D
 @onready var health_component: HealthComponent = $Components/HealthComponent
 @onready var h_box_container: HBoxContainer = $CanvasLayer/HBoxContainer
+@onready var timer_label: Label = $CanvasLayer/TimerLabel
 
 signal ataque_finalizado 
 
@@ -97,6 +98,11 @@ func on_dead():
 		var game_over_scene = preload("res://escenas/GameOver.tscn").instantiate()
 		get_tree().current_scene.add_child(game_over_scene)
 		get_tree().paused = true
+
+func _process(delta: float) -> void:
+	var segundos = int(GameManager.tiempo_transcurrido) % 60
+	var minutos = int(GameManager.tiempo_transcurrido) / 60
+	timer_label.text = "%02d:%02d" % [minutos, segundos]
 
 func _on_area_attack_body_entered(body: Node2D) -> void:
 	if body is Enemy:
